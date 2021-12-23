@@ -231,9 +231,18 @@ function ConnectMenu() {
       </Box> */}
       <Grid container justifyContent="center" alignItems="center">
         <Grid item xs={12} sm={8} md={6} style={{ textAlign: "center" }}>
-          <Box marginTop={10}>
-          {totalLeft === 0 && <Typography style={{color: "red"}} variant="h1">Sold Out</Typography>}
-            <img src={title} alt="Title" style={{ height: "250px" }} />
+          <Box marginTop={4}>
+          {/* {totalLeft === 0 && <Typography style={{color: "red"}} variant="h1">Sold Out</Typography>} */}
+            <Box mb={5}>
+              <Typography variant="h1" style={{color: "black", fontWeight: "bold", fontSize: "70px"}}>Origin DAO</Typography>
+            </Box>
+            <Box mb={5}>
+              <Typography style={{color: "black"}}>Welcome to the Liquidity Bootstrap Event of Origin DAO</Typography>
+            </Box>
+            <Box>
+              <Typography style={{color: "blue", marginBottom: "20px"}}>only 999 slots | ends in 48 hours</Typography>
+              <Typography style={{color: "blue"}}>Updates will be posted in the discord group</Typography>
+            </Box>
           </Box>
           <Box marginTop={6} display="flex" justifyContent="space-around">
             <Button
