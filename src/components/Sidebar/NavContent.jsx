@@ -7,9 +7,10 @@ import { ReactComponent as StakeIcon } from "../../assets/icons/stake.svg";
 import { ReactComponent as BondIcon } from "../../assets/icons/bond.svg";
 import { ReactComponent as GlobeIcon } from "../../assets/icons/globe.svg";
 import { ReactComponent as DashboardIcon } from "../../assets/icons/dashboard.svg";
+import { ReactComponent as SaleIcon } from "../../assets/icons/arrow-up.svg";
 import { ReactComponent as WrapIcon } from "../../assets/icons/wrap.svg";
 // import { ReactComponent as HectorIcon } from "../../assets/icons/logo.svg";
-import logo from './logo.png';
+import logo from "./logo.png";
 import { trim, shorten } from "../../helpers";
 import { useAddress, useWeb3Context } from "src/hooks/web3Context";
 import useBonds from "../../hooks/Bonds";
@@ -53,12 +54,8 @@ function NavContent() {
         <div className="dapp-menu-top">
           <Box className="branding-header">
             <Link href="#" target="_blank">
-              <img
-                src={logo}
-                alt='Logo'
-                style={{ minWdth: "151px", minHeight: "98px", width: "151px" }}
-              />
-              <div className="wallet-link f-32">VENOS</div>
+              <img src={logo} alt="Logo" style={{ minWdth: "151px", minHeight: "98px", width: "151px" }} />
+              <div className="wallet-link f-32">ORIGIN</div>
             </Link>
             {address && (
               <div className="wallet-link">
@@ -71,6 +68,20 @@ function NavContent() {
 
           <div className="dapp-menu-links">
             <div className="dapp-nav" id="navbarNav">
+              <Link
+                component={NavLink}
+                id="dash-nav"
+                to="/sale"
+                isActive={(match, location) => {
+                  return checkPage(match, location, "sale");
+                }}
+                className={`button-dapp-menu ${isActive ? "active" : ""}`}
+              >
+                <Typography variant="h6">
+                  <SvgIcon color="primary" component={SaleIcon} />
+                  Community Sale
+                </Typography>
+              </Link>
               <Link
                 component={NavLink}
                 id="dash-nav"
@@ -189,7 +200,7 @@ function NavContent() {
                 className={`button-dapp-menu ${isActive ? "active" : ""}`}
               >
                 <Typography variant="h6">
-                  <SvgIcon color="primary" component={GlobeIcon} viewBox="0 0 24 24"/>
+                  <SvgIcon color="primary" component={GlobeIcon} viewBox="0 0 24 24" />
                   Calculator
                 </Typography>
               </Link>

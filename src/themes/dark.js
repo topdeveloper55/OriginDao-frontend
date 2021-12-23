@@ -74,9 +74,7 @@ export const dark = responsiveFontSizes(
             "@font-face": fonts,
             body: {
               // background: darkTheme.background,
-              backgroundImage:
-                "url(background.png)",
-              backgroundSize: 'cover'
+              background: 'linear-gradient(to right bottom, #430089, #82ffa1)',
             },
           },
         },

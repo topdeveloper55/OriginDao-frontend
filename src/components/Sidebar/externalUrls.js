@@ -20,12 +20,12 @@ const externalUrls = [
   //   icon: <SvgIcon viewBox="0 0 155 172" color="primary" component={SpiritSwapIcon} />,
   // },
   {
-    title: "VENOS Bank",
+    title: "ORIGIN Bank",
     label: "(Coming soon)",
     icon: <MonetizationOnOutlined viewBox="0 0 20 24" />,
   },
   {
-    title: "VENOS PRO",
+    title: "ORIGIN PRO",
     label: "(Coming soon)",
     icon: <AccountBalanceOutlined viewBox="0 0 20 24" />,
   },

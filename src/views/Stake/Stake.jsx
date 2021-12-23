@@ -125,11 +125,11 @@ function Stake() {
     // 1st catch if quantity > balance
     let gweiValue = ethers.utils.parseUnits(value, "gwei");
     if (action === "stake" && gweiValue.gt(ethers.utils.parseUnits(hecBalance, "gwei"))) {
-      return dispatch(error("You cannot stake more than your VNO balance."));
+      return dispatch(error("You cannot stake more than your ORN balance."));
     }
 
     if (action === "unstake" && gweiValue.gt(ethers.utils.parseUnits(unstakedVal, "gwei"))) {
-      return dispatch(error("You cannot unstake more than your sVNO balance."));
+      return dispatch(error("You cannot unstake more than your sORN balance."));
     }
     await dispatch(
       changeStake({
@@ -245,7 +245,7 @@ function Stake() {
                           Current Index
                         </Typography>
                         <Typography variant="h4">
-                          {currentIndex ? <>{trim(currentIndex, 2)} VNO</> : <Skeleton width="150px" />}
+                          {currentIndex ? <>{trim(currentIndex, 2)} ORN</> : <Skeleton width="150px" />}
                         </Typography>
                       </div>
                     </Grid>
@@ -259,7 +259,7 @@ function Stake() {
                     <div className="wallet-menu" id="wallet-menu">
                       {modalButton}
                     </div>
-                    <Typography variant="h6">Connect your wallet to stake VNO</Typography>
+                    <Typography variant="h6">Connect your wallet to stake ORN</Typography>
                   </div>
                 ) : (
                   <>
@@ -285,15 +285,15 @@ function Stake() {
                               <Typography variant="body1" className="stake-note" color="textSecondary">
                                 {view === 0 ? (
                                   <>
-                                    First time staking <b>VNO</b>?
+                                    First time staking <b>ORN</b>?
                                     <br />
-                                    Please approve Venos Dao to use your <b>VNO</b> for staking.
+                                    Please approve Origin Dao to use your <b>ORN</b> for staking.
                                   </>
                                 ) : (
                                   <>
-                                    First time unstaking <b>sVNO</b>?
+                                    First time unstaking <b>sORN</b>?
                                     <br />
-                                    Please approve Venos Dao to use your <b>sVNO</b> for unstaking.
+                                    Please approve Origin Dao to use your <b>sORN</b> for unstaking.
                                   </>
                                 )}
                               </Typography>
@@ -336,7 +336,7 @@ function Stake() {
                                 onChangeStake("stake", false);
                               }}
                             >
-                              {txnButtonText(pendingTransactions, "staking", "Stake VNO")}
+                              {txnButtonText(pendingTransactions, "staking", "Stake ORN")}
                             </Button>
                           ) : (
                             <Button
@@ -365,7 +365,7 @@ function Stake() {
                                 onChangeStake("unstake", false);
                               }}
                             >
-                              {txnButtonText(pendingTransactions, "unstaking", "Unstake VNO")}
+                              {txnButtonText(pendingTransactions, "unstaking", "Unstake ORN")}
                             </Button>
                           ) : (
                             <Button
@@ -388,21 +388,21 @@ function Stake() {
                       <div className="data-row">
                         <Typography variant="body1">Your Balance</Typography>
                         <Typography variant="body1">
-                          {isAppLoading ? <Skeleton width="80px" /> : <>{trim(hecBalance, 4)} VNO</>}
+                          {isAppLoading ? <Skeleton width="80px" /> : <>{trim(hecBalance, 4)} ORN</>}
                         </Typography>
                       </div>
 
                       <div className="data-row">
                         <Typography variant="body1">Your Staked Balance</Typography>
                         <Typography variant="body1">
-                          {isAppLoading ? <Skeleton width="80px" /> : <>{trimmedBalance} sVNO</>}
+                          {isAppLoading ? <Skeleton width="80px" /> : <>{trimmedBalance} sORN</>}
                         </Typography>
                       </div>
 
                       <div className="data-row">
                         <Typography variant="body1">Next Reward Amount</Typography>
                         <Typography variant="body1">
-                          {isAppLoading ? <Skeleton width="80px" /> : <>{nextRewardValue} sVNO</>}
+                          {isAppLoading ? <Skeleton width="80px" /> : <>{nextRewardValue} sORN</>}
                         </Typography>
                       </div>
 
@@ -444,7 +444,7 @@ function Stake() {
                       <div className="wallet-menu" id="wallet-menu">
                         {modalButton}
                       </div>
-                      <Typography variant="h6">Connect your wallet to stake VNO</Typography>
+                      <Typography variant="h6">Connect your wallet to stake ORN</Typography>
                     </div>
                   ) : (
                     <>
@@ -459,9 +459,9 @@ function Stake() {
                               <Box className="help-text">
                                 <Typography variant="body1" className="stake-note" color="textSecondary">
                                   <>
-                                    First time unstaking <b>sVNO</b>?
+                                    First time unstaking <b>sORN</b>?
                                     <br />
-                                    Please approve Venos Dao to use your <b>sVNO</b> for unstaking.
+                                    Please approve Origin Dao to use your <b>sORN</b> for unstaking.
                                   </>
                                 </Typography>
                               </Box>
@@ -503,7 +503,7 @@ function Stake() {
                                   onChangeStake("unstake", true);
                                 }}
                               >
-                                {txnButtonText(pendingTransactions, "unstaking", "Unstake VNO")}
+                                {txnButtonText(pendingTransactions, "unstaking", "Unstake ORN")}
                               </Button>
                             ) : (
                               <Button
@@ -526,14 +526,14 @@ function Stake() {
                         <div className="data-row">
                           <Typography variant="body1">Your Staked Balance</Typography>
                           <Typography variant="body1">
-                            {isAppLoading ? <Skeleton width="80px" /> : <>{oldtrimmedBalance} sVNO</>}
+                            {isAppLoading ? <Skeleton width="80px" /> : <>{oldtrimmedBalance} sORN</>}
                           </Typography>
                         </div>
 
                         <div className="data-row">
                           <Typography variant="body1">Next Reward Amount</Typography>
                           <Typography variant="body1">
-                            {isAppLoading ? <Skeleton width="80px" /> : <>{oldnextRewardValue} sVNO</>}
+                            {isAppLoading ? <Skeleton width="80px" /> : <>{oldnextRewardValue} sORN</>}
                           </Typography>
                         </div>
 

@@ -19,7 +19,7 @@ import { loadAppDetails } from "./slices/AppSlice";
 import { loadAccountDetails, calculateUserBondDetails } from "./slices/AccountSlice";
 import { info } from "./slices/MessagesSlice";
 
-import { Stake, ChooseBond, Bond, TreasuryDashboard } from "./views";
+import { Stake, ChooseBond, Bond, TreasuryDashboard, Sale } from "./views";
 import Sidebar from "./components/Sidebar/Sidebar.jsx";
 import TopBar from "./components/TopBar/TopBar.jsx";
 import NavDrawer from "./components/Sidebar/NavDrawer.jsx";
@@ -150,7 +150,7 @@ function App() {
     // We want to ensure that we are storing the UTM parameters for later, even if the user follows links
     storeQueryParameters();
     if (shouldTriggerSafetyCheck()) {
-      dispatch(info("Safety Check: Always verify you're on venosdao.com!"));
+      dispatch(info("Safety Check: Always verify you're on origindao.com!"));
     }
   }, []);
 
@@ -237,6 +237,10 @@ function App() {
 
         <div className={`${classes.content} ${isSmallerScreen && classes.contentShift}`}>
           <Switch>
+            <Route exact path="/sale">
+              <Sale />
+            </Route>
+
             <Route exact path="/dashboard">
               <TreasuryDashboard />
             </Route>

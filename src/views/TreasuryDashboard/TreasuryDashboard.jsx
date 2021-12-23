@@ -116,7 +116,7 @@ function TreasuryDashboard() {
 
               <Box className="metric price">
                 <Typography variant="h6" color="textSecondary">
-                  VNO Price
+                  ORN Price
                 </Typography>
                 <Typography variant="h5">
                   {marketPrice ? formatCurrency(marketPrice, 2) : <Skeleton type="text" />}
@@ -125,10 +125,10 @@ function TreasuryDashboard() {
 
               <Box className="metric wsoprice">
                 <Typography variant="h6" color="textSecondary">
-                  wsVNO Price
+                  wsORN Price
                   <InfoTooltip
                     message={
-                      "wsVNO = sVNO * index\n\nThe price of wsVNO is equal to the price of VNO multiplied by the current index"
+                      "wsORN = sORN * index\n\nThe price of wsORN is equal to the price of ORN multiplied by the current index"
                     }
                   />
                 </Typography>
@@ -153,7 +153,7 @@ function TreasuryDashboard() {
 
               <Box className="metric bpo">
                 <Typography variant="h6" color="textSecondary">
-                  Backing per VNO
+                  Backing per ORN
                 </Typography>
                 <Typography variant="h5">
                   {backingPerHec ? formatCurrency(backingPerHec, 2) : <Skeleton type="text" />}
@@ -165,12 +165,12 @@ function TreasuryDashboard() {
                   Current Index
                   <InfoTooltip
                     message={
-                      "The current index tracks the amount of sVNO accumulated since the beginning of staking. Basically, how much sVNO one would have if they staked and held a single VNO from day 1."
+                      "The current index tracks the amount of sORN accumulated since the beginning of staking. Basically, how much sORN one would have if they staked and held a single ORN from day 1."
                     }
                   />
                 </Typography>
                 <Typography variant="h5">
-                  {currentIndex ? trim(currentIndex, 2) + " sVNO" : <Skeleton type="text" />}
+                  {currentIndex ? trim(currentIndex, 2) + " sORN" : <Skeleton type="text" />}
                 </Typography>
               </Box>
             </Box>
@@ -233,7 +233,12 @@ function TreasuryDashboard() {
                   type="stack"
                   data={data}
                   format="currency"
-                  dataKey={["treasuryDaiRiskFreeValue", "treasuryUsdcRiskFreeValue", "treasuryMIMRiskFreeValue", "treasuryFRAXRiskFreeValue"]}
+                  dataKey={[
+                    "treasuryDaiRiskFreeValue",
+                    "treasuryUsdcRiskFreeValue",
+                    "treasuryMIMRiskFreeValue",
+                    "treasuryFRAXRiskFreeValue",
+                  ]}
                   stopColor={[
                     ["#F5AC37", "#EA9276"],
                     ["#768299", "#98B3E9"],
@@ -259,7 +264,7 @@ function TreasuryDashboard() {
                   data={data}
                   dataKey={["treasuryHecDaiPOL"]}
                   stopColor={[["rgba(128, 204, 131, 1)", "rgba(128, 204, 131, 0)"]]}
-                  headerText="Protocol Owned Liquidity VNO-DAI"
+                  headerText="Protocol Owned Liquidity ORN-DAI"
                   headerSubText={`${data && trim(data[0].treasuryHecDaiPOL, 2)}% `}
                   dataFormat="percent"
                   bulletpointColors={bulletpoints.pol}
@@ -279,7 +284,7 @@ function TreasuryDashboard() {
                   data={staked}
                   dataKey={["staked"]}
                   stopColor={[["#55EBC7", "#47ACEB"]]}
-                  headerText="VNO Staked"
+                  headerText="ORN Staked"
                   dataFormat="percent"
                   headerSubText={`${staked && trim(staked[0].staked, 2)}% `}
                   isStaked={true}

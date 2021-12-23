@@ -85,7 +85,7 @@ function HecMenu() {
     >
       <Button id="hec-menu-button" size="large" variant="contained" color="secondary" title="HEC" aria-describedby={id}>
         <SvgIcon component={InfoIcon} color="primary" />
-        <Typography>VNO</Typography>
+        <Typography>ORN</Typography>
       </Button>
 
       <Popper id={id} open={open} anchorEl={anchorEl} placement="bottom-start" transition>
@@ -120,7 +120,7 @@ function HecMenu() {
 
                   <Link component={NavLink} to="/wrap" style={{ textDecoration: "none" }}>
                     <Button size="large" variant="contained" color="secondary" fullWidth>
-                      <Typography align="left">Wrap sVNO</Typography>
+                      <Typography align="left">Wrap sORN</Typography>
                     </Button>
                   </Link>
                 </Box>
@@ -134,19 +134,19 @@ function HecMenu() {
                         <Box sx={{ width: "30px", height: "30px" }}>
                           <img src={logo} alt="Logo" style={{ height: "25px", width: "25px" }} />
                         </Box>
-                        <Typography variant="body1">VNO</Typography>
+                        <Typography variant="body1">ORN</Typography>
                       </Button>
                       <Button variant="contained" color="secondary" onClick={addTokenToWallet("sHEC", SHEC_ADDRESS)}>
                         <Box sx={{ borderRadius: "100%", backgroundColor: "#3f4678", width: "30px", height: "30px" }}>
                           <img src={logo} alt="Logo" style={{ height: "25px", width: "25px" }} />
                         </Box>
-                        <Typography variant="body1">sVNO</Typography>
+                        <Typography variant="body1">sORN</Typography>
                       </Button>
                       <Button variant="contained" color="secondary" onClick={addTokenToWallet("wsHEC", WSHEC_ADDRESS)}>
                         <Box sx={{ borderRadius: "100%", backgroundColor: "#555555", width: "30px", height: "30px" }}>
                           <img src={logo} alt="Logo" style={{ height: "25px", width: "25px" }} />
                         </Box>
-                        <Typography variant="body1">wsVNO</Typography>
+                        <Typography variant="body1">wsORN</Typography>
                       </Button>
                     </Box>
                   </Box>

@@ -150,11 +150,11 @@ function BondPurchase({ bond, slippage, recipientAddress }) {
   let reward;
   let displayName;
   if (bond.isFour) {
-    reward = "sVNO";
+    reward = "sORN";
     displayName = bond.displayName + " (4, 4)";
     discount += stakingRebasePercentage;
   } else {
-    reward = "VNO";
+    reward = "ORN";
     displayName = bond.displayName;
   }
 
@@ -173,7 +173,7 @@ function BondPurchase({ bond, slippage, recipientAddress }) {
               <div className="help-text">
                 <em>
                   <Typography variant="body1" align="center" color="textSecondary">
-                    First time bonding <b>{displayName}</b>? <br /> Please approve Venos Dao to use your{" "}
+                    First time bonding <b>{displayName}</b>? <br /> Please approve Origin Dao to use your{" "}
                     <b>{displayName}</b> for bonding.
                   </Typography>
                 </em>
@@ -245,7 +245,7 @@ function BondPurchase({ bond, slippage, recipientAddress }) {
             <Typography>You Will Get</Typography>
             <Typography id="bond-value-id" className="price-data">
               {isSoldOut ? (
-                "0 VNO"
+                "0 ORN"
               ) : (
                 <>{isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.bondQuote, 4) || "0"} ${reward}`}</>
               )}

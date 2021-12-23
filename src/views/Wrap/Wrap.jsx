@@ -106,14 +106,14 @@ function Wrap() {
       action === "wrap" &&
       ethers.utils.parseUnits(quantity, "gwei").gt(ethers.utils.parseUnits(sHecBalance, "gwei"))
     ) {
-      return dispatch(error("You cannot wrap more than your sVNO balance."));
+      return dispatch(error("You cannot wrap more than your sORN balance."));
     }
 
     if (
       action === "unwrap" &&
       ethers.utils.parseUnits(quantity, "ether").gt(ethers.utils.parseUnits(wsHecBalance, "ether"))
     ) {
-      return dispatch(error("You cannot unwrap more than your wsVNO balance."));
+      return dispatch(error("You cannot unwrap more than your wsORN balance."));
     }
 
     await dispatch(changeWrap({ address, action, value: quantity.toString(), provider, networkID: chainID }));
@@ -160,7 +160,7 @@ function Wrap() {
                   aria-label="wsHec-wut"
                   target="_blank"
                 > */}
-                <Typography>wsVNO</Typography>
+                <Typography>wsORN</Typography>
                 {/* <SvgIcon component={InfoIcon} color="primary" /> */}
                 {/* </Link> */}
               </div>
@@ -172,7 +172,7 @@ function Wrap() {
                   <Grid item xs={12} sm={4} md={4} lg={4}>
                     <div className="wrap-sHEC">
                       <Typography variant="h5" color="textSecondary">
-                        sVNO Price
+                        sORN Price
                       </Typography>
                       <Typography variant="h4">
                         {/* {false ? formatCurrency(sHECPrice, 2) : <Skeleton width="150px" />} */}
@@ -186,17 +186,17 @@ function Wrap() {
                         Current Index
                       </Typography>
                       <Typography variant="h4">
-                        {currentIndex ? <>{trim(currentIndex, 2)} VNO</> : <Skeleton width="150px" />}
+                        {currentIndex ? <>{trim(currentIndex, 2)} ORN</> : <Skeleton width="150px" />}
                       </Typography>
                     </div>
                   </Grid>
                   <Grid item xs={12} sm={4} md={4} lg={4}>
                     <div className="wrap-wsHEC">
                       <Typography variant="h5" color="textSecondary">
-                        wsVNO Price
+                        wsORN Price
                         <InfoTooltip
                           message={
-                            "wsVNO = sVNO * index\n\nThe price of wsVNO is equal to the price of VNO multiplied by the current index"
+                            "wsORN = sORN * index\n\nThe price of wsORN is equal to the price of ORN multiplied by the current index"
                           }
                         />
                       </Typography>
@@ -215,7 +215,7 @@ function Wrap() {
                   <div className="wallet-menu" id="wallet-menu">
                     {modalButton}
                   </div>
-                  <Typography variant="h6">Connect your wallet to wrap sVNO</Typography>
+                  <Typography variant="h6">Connect your wallet to wrap sORN</Typography>
                 </div>
               ) : (
                 <>
@@ -240,9 +240,9 @@ function Wrap() {
                             <Typography variant="body1" className="stake-note" color="textSecondary">
                               {view === 0 && (
                                 <>
-                                  First time wrapping <b>sVNO</b>?
+                                  First time wrapping <b>sORN</b>?
                                   <br />
-                                  Please approve Venos Dao to use your <b>sVNO</b> for wrapping.
+                                  Please approve Origin Dao to use your <b>sORN</b> for wrapping.
                                 </>
                               )}
                             </Typography>
@@ -283,7 +283,7 @@ function Wrap() {
                               onChangeWrap("wrap");
                             }}
                           >
-                            {txnButtonText(pendingTransactions, "wrapping", "Wrap sVNO")}
+                            {txnButtonText(pendingTransactions, "wrapping", "Wrap sORN")}
                           </Button>
                         ) : (
                           <Button
@@ -310,7 +310,7 @@ function Wrap() {
                             onChangeWrap("unwrap");
                           }}
                         >
-                          {txnButtonText(pendingTransactions, "unwrapping", "Unwrap sVNO")}
+                          {txnButtonText(pendingTransactions, "unwrapping", "Unwrap sORN")}
                         </Button>
                       </TabPanel>
                     </Box>
@@ -319,8 +319,8 @@ function Wrap() {
                       <Box padding={1}>
                         <Typography variant="body2" className={classes.textHighlight}>
                           {isUnwrap
-                            ? `Unwrapping ${quantity} wsVNO will result in ${trim(convertedQuantity, 4)} sVNO`
-                            : `Wrapping ${quantity} sVNO will result in ${trim(convertedQuantity, 4)} wsVNO`}
+                            ? `Unwrapping ${quantity} wsORN will result in ${trim(convertedQuantity, 4)} sORN`
+                            : `Wrapping ${quantity} sORN will result in ${trim(convertedQuantity, 4)} wsORN`}
                         </Typography>
                       </Box>
                     )}
@@ -330,13 +330,13 @@ function Wrap() {
                     <div className="data-row">
                       <Typography variant="body1">Wrappable Balance</Typography>
                       <Typography variant="body1">
-                        {isAppLoading ? <Skeleton width="80px" /> : <>{trim(sHecBalance, 4)} sVNO</>}
+                        {isAppLoading ? <Skeleton width="80px" /> : <>{trim(sHecBalance, 4)} sORN</>}
                       </Typography>
                     </div>
                     <div className="data-row">
                       <Typography variant="body1">Unwrappable Balance</Typography>
                       <Typography variant="body1">
-                        {isAppLoading ? <Skeleton width="80px" /> : <>{trim(wsHecBalance, 4)} wsVNO</>}
+                        {isAppLoading ? <Skeleton width="80px" /> : <>{trim(wsHecBalance, 4)} wsORN</>}
                       </Typography>
                     </div>
                   </div>

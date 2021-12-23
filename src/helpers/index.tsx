@@ -14,14 +14,14 @@ import { IBaseAsyncThunk } from "src/slices/interfaces";
 
 // NOTE (appleseed): this looks like an outdated method... we now have this data in the graph (used elsewhere in the app)
 export async function getMarketPrice({ networkID, provider }: IBaseAsyncThunk) {
-  // const hec_dai_address = hec_dai.getAddressForReserve(networkID);
-  // const pairContract = new ethers.Contract(hec_dai_address, PairContract, provider);
-  // const reserves = await pairContract.getReserves();
-  // const marketPrice = reserves[1] / reserves[0];
+  const hec_dai_address = hec_dai.getAddressForReserve(networkID);
+  const pairContract = new ethers.Contract(hec_dai_address, PairContract, provider);
+  const reserves = await pairContract.getReserves();
+  const marketPrice = reserves[1] / reserves[0];
 
   // commit('set', { marketPrice: marketPrice / Math.pow(10, 9) });
-  // return marketPrice;
-  return 12000000000;
+  return marketPrice;
+  // return 12000000000;
 }
 
 export async function getTokenPrice(tokenId = "hector-dao") {

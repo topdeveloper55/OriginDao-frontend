@@ -86,7 +86,7 @@ function Calculator() {
                                 <Grid container spacing={2}>
                                     <Grid item xs={12} sm={4} md={4} lg={4}>
                                         <Box className="calculator-card-apy">
-                                            <Typography variant="h5" color="textSecondary">VNO Price</Typography>
+                                            <Typography variant="h5" color="textSecondary">ORN Price</Typography>
                                             <Typography variant="h4">{isAppLoading ? <Skeleton width="100px" /> : `$${trimeMarketPrice}`}</Typography>
                                         </Box>
                                     </Grid>
@@ -100,8 +100,8 @@ function Calculator() {
                                     </Grid>
                                     <Grid item xs={6} sm={4} md={4} lg={4}>
                                         <Box className="calculator-card-index">
-                                            <Typography variant="h5" color="textSecondary">Your sVNO Balance</Typography>
-                                            <Typography variant="h4">{isAppLoading ? <Skeleton width="100px" /> : <>{trimmedsHecBalance} sVNO</>}</Typography>
+                                            <Typography variant="h5" color="textSecondary">Your sORN Balance</Typography>
+                                            <Typography variant="h4">{isAppLoading ? <Skeleton width="100px" /> : <>{trimmedsHecBalance} sORN</>}</Typography>
                                         </Box>
                                     </Grid>
                                 </Grid>
@@ -114,7 +114,7 @@ function Calculator() {
                                     <Grid container spacing={3}>
                                         <Grid item xs={12} sm={6}>
                                             <Box className="calculator-card-action-area-inp-wrap">
-                                                <Typography variant="h6">sVNO Amount</Typography>
+                                                <Typography variant="h6">sORN Amount</Typography>
                                                 <OutlinedInput
                                                     type="number"
                                                     placeholder="Amount"
@@ -154,7 +154,7 @@ function Calculator() {
                                         </Grid>
                                         <Grid item xs={12} sm={6}>
                                             <Box className="calculator-card-action-area-inp-wrap">
-                                                <Typography variant="h6">VNO price at purchase ($)</Typography>
+                                                <Typography variant="h6">ORN price at purchase ($)</Typography>
                                                 <OutlinedInput
                                                     type="number"
                                                     placeholder="Amount"
@@ -174,7 +174,7 @@ function Calculator() {
                                         </Grid>
                                         <Grid item xs={12} sm={6}>
                                             <Box className="calculator-card-action-area-inp-wrap">
-                                                <Typography variant="h6">Future VNO market price ($)</Typography>
+                                                <Typography variant="h6">Future ORN market price ($)</Typography>
                                                 <OutlinedInput
                                                     type="number"
                                                     placeholder="Amount"
@@ -208,8 +208,8 @@ function Calculator() {
                                         <Typography>{isAppLoading ? <Skeleton width="80px" /> : <>${calcCurrentWealth()}</>}</Typography>
                                     </Box>
                                     <Box className="data-row">
-                                        <Typography>VNO rewards estimation</Typography>
-                                        <Typography>{isAppLoading ? <Skeleton width="80px" /> : <>{rewardsEstimation} VNO</>}</Typography>
+                                        <Typography>ORN rewards estimation</Typography>
+                                        <Typography>{isAppLoading ? <Skeleton width="80px" /> : <>{rewardsEstimation} ORN</>}</Typography>
                                     </Box>
                                     <Box className="data-row">
                                         <Typography>Potential return</Typography>

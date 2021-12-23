@@ -156,13 +156,13 @@ export const tooltipItems = {
 };
 
 export const tooltipInfoMessages = {
-  tvl: "Total Value Deposited, is the dollar amount of all VNO staked in the protocol. This metric is often used as growth or health indicator in DeFi projects.",
+  tvl: "Total Value Deposited, is the dollar amount of all ORN staked in the protocol. This metric is often used as growth or health indicator in DeFi projects.",
   mvt: "Market Value of Treasury Assets, is the sum of the value (in dollars) of all assets held by the treasury.",
-  rfv: "Risk Free Value, is the amount of funds the treasury guarantees to use for backing VNO.",
+  rfv: "Risk Free Value, is the amount of funds the treasury guarantees to use for backing ORN.",
   pol: "Protocol Owned Liquidity, is the amount of LP the treasury owns and controls. The more POL the better for the protocol and its users.",
-  staked: "VNO Staked, is the ratio of sVNO to VNO (staked vs unstaked)",
+  staked: "ORN Staked, is the ratio of sORN to ORN (staked vs unstaked)",
   apy: "Annual Percentage Yield, is the normalized representation of an interest rate, based on a compounding period over one year. Note that APYs provided are rather ballpark level indicators and not so much precise future results.",
-  runway: "Runway, is the number of days sVNO emissions can be sustained at a given rate. Lower APY = longer runway",
+  runway: "Runway, is the number of days sORN emissions can be sustained at a given rate. Lower APY = longer runway",
 };
 
 export const itemType = {

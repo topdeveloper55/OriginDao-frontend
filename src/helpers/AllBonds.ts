@@ -30,11 +30,11 @@ export const dai = new StableBond({
   bondToken: "DAI",
   bondIconSvg: DaiImg,
   bondContractABI: DaiBondContract,
-  fourAddress: "0x98D833f7e29A15f219b404F38e5735B0D940A806",   //HectorBondStakeDepository1  0x23337B675375507CE218df5F92f1a71252DAB3E5
-  oldfourAddress: "0x23836B896681f78729F8bB333A6eFE6FdAcFAfD9", //HectorBondStakeDepository2 0xe8fd4630800bA4335801D1b104B07328Ae415605
+  fourAddress: "0x23337B675375507CE218df5F92f1a71252DAB3E5",   //HectorBondStakeDepository1  0x23337B675375507CE218df5F92f1a71252DAB3E5
+  oldfourAddress: "0xe8fd4630800bA4335801D1b104B07328Ae415605", //HectorBondStakeDepository2 0xe8fd4630800bA4335801D1b104B07328Ae415605
   networkAddrs: {
     [NetworkID.Mainnet]: {
-      bondAddress: "0x57EeC874f593d07Cc0dd4619fCC5C56D73Ce8311", //HectorBondDepository1   0x4099EB0e82Ffa0048E4BF037a9743ca05Ec561D7
+      bondAddress: "0x4099EB0e82Ffa0048E4BF037a9743ca05Ec561D7", //HectorBondDepository1   0x4099EB0e82Ffa0048E4BF037a9743ca05Ec561D7
       reserveAddress: "0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E",//dai
     },
     [NetworkID.Testnet]: {
@@ -58,7 +58,7 @@ export const dai4 = new StableBond({
   bondContractABI: MimBondContract,
   networkAddrs: {
     [NetworkID.Mainnet]: {
-      bondAddress: "0x23836B896681f78729F8bB333A6eFE6FdAcFAfD9",  // HectorBondStakeDepository2   0xe8fd4630800bA4335801D1b104B07328Ae415605
+      bondAddress: "0xe8fd4630800bA4335801D1b104B07328Ae415605",  // HectorBondStakeDepository2   0xe8fd4630800bA4335801D1b104B07328Ae415605
       reserveAddress: "0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E",  //dai
     },
     [NetworkID.Testnet]: {
@@ -79,11 +79,11 @@ export const dai4_v2 = new StableBond({
   bondIconSvg: DaiImg,
   isFour: true,
   isTotal: true,
-  oldfourAddress: "0xA539C6d31a5de48CdA0Bc7C7F47AbBbF53efe4e3",   //HectorBondStakeDepository2  0xe8fd4630800bA4335801D1b104B07328Ae415605
+  oldfourAddress: "0xe8fd4630800bA4335801D1b104B07328Ae415605",   //HectorBondStakeDepository2  0xe8fd4630800bA4335801D1b104B07328Ae415605
   bondContractABI: MimBondContract,
   networkAddrs: {
     [NetworkID.Mainnet]: {
-      bondAddress: "0x98D833f7e29A15f219b404F38e5735B0D940A806",  //HectorBondStakeDepository1  0x23337B675375507CE218df5F92f1a71252DAB3E5
+      bondAddress: "0x23337B675375507CE218df5F92f1a71252DAB3E5",  //HectorBondStakeDepository1  0x23337B675375507CE218df5F92f1a71252DAB3E5
       reserveAddress: "0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E",  //dai
     },
     [NetworkID.Testnet]: {
@@ -107,7 +107,7 @@ export const ftm = new CustomBond({
   reserveContract: ierc20Abi, // The Standard ierc20Abi since they're normal tokens
   networkAddrs: {
     [NetworkID.Mainnet]: {
-      bondAddress: "0x7BB3d208435B2B9742837380c20B0D07e69d115D",  //HectorBondDepository2   0x72De9F0e51cA520379a341318870836FdCaf03B9
+      bondAddress: "0x72De9F0e51cA520379a341318870836FdCaf03B9",  //HectorBondDepository2   0x72De9F0e51cA520379a341318870836FdCaf03B9
       reserveAddress: "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83",  //WrappedFtm
     },
     [NetworkID.Testnet]: {
@@ -136,12 +136,12 @@ export const usdc = new StableBond({
   bondToken: "USDC",
   decimals: 6,
   bondIconSvg: UsdcImg,
-  fourAddress: "0xBc65fe5fdE971399f8fc9FfC60A349ab0Ad1CD50",  //HectorBondStakeDepository3  0xD0373F236Be04EcF08F51fc4E3AdE7159D7cDe65
-  oldfourAddress: "0x80584CdaF82F691BaeD08576092C06465ABa5245",  //HectorBondStakeDepository4  0x605c31dD24c71f0b732Ef33aC12CDce77fAC09B6
+  fourAddress: "0xD0373F236Be04EcF08F51fc4E3AdE7159D7cDe65",  //HectorBondStakeDepository3  0xD0373F236Be04EcF08F51fc4E3AdE7159D7cDe65
+  oldfourAddress: "0x605c31dD24c71f0b732Ef33aC12CDce77fAC09B6",  //HectorBondStakeDepository4  0x605c31dD24c71f0b732Ef33aC12CDce77fAC09B6
   bondContractABI: DaiBondContract,
   networkAddrs: {
     [NetworkID.Mainnet]: {
-      bondAddress: "0x4D21Ba01d5D10FaCB94F6Bb9ae1CBF9F20847823",  //HectorBondDepository3  0x5d05EF2654B9055895F21D7057095e2D7575f5A2
+      bondAddress: "0x5d05EF2654B9055895F21D7057095e2D7575f5A2",  //HectorBondDepository3  0x5d05EF2654B9055895F21D7057095e2D7575f5A2
       reserveAddress: "0x04068da6c83afcfa0e13ba15a6696662335d5b75",  //Usdc
     },
     [NetworkID.Testnet]: {
@@ -166,7 +166,7 @@ export const usdc4 = new StableBond({
   isTotal: true,
   networkAddrs: {
     [NetworkID.Mainnet]: {
-      bondAddress: "0x80584CdaF82F691BaeD08576092C06465ABa5245",  //HectorBondStakeDepository4  0x605c31dD24c71f0b732Ef33aC12CDce77fAC09B6
+      bondAddress: "0x605c31dD24c71f0b732Ef33aC12CDce77fAC09B6",  //HectorBondStakeDepository4  0x605c31dD24c71f0b732Ef33aC12CDce77fAC09B6
       reserveAddress: "0x04068da6c83afcfa0e13ba15a6696662335d5b75", //usdc
     },
     [NetworkID.Testnet]: {
@@ -186,13 +186,13 @@ export const usdc4_v2 = new StableBond({
   bondToken: "USDC",
   bondIconSvg: UsdcImg,
   bondContractABI: MimBondContract,
-  oldfourAddress: "0x80584CdaF82F691BaeD08576092C06465ABa5245",  //HectorBondStakeDepository4   0x605c31dD24c71f0b732Ef33aC12CDce77fAC09B6
+  oldfourAddress: "0x605c31dD24c71f0b732Ef33aC12CDce77fAC09B6",  //HectorBondStakeDepository4   0x605c31dD24c71f0b732Ef33aC12CDce77fAC09B6
   isFour: true,
   decimals: 6,
   isTotal: true,
   networkAddrs: {
     [NetworkID.Mainnet]: {
-      bondAddress: "0xBc65fe5fdE971399f8fc9FfC60A349ab0Ad1CD50",  //HectorBondStakeDepository3  0xD0373F236Be04EcF08F51fc4E3AdE7159D7cDe65
+      bondAddress: "0xD0373F236Be04EcF08F51fc4E3AdE7159D7cDe65",  //HectorBondStakeDepository3  0xD0373F236Be04EcF08F51fc4E3AdE7159D7cDe65
       reserveAddress: "0x04068da6c83afcfa0e13ba15a6696662335d5b75", //usdc
     },
     [NetworkID.Testnet]: {
@@ -215,7 +215,7 @@ export const mim4 = new StableBond({
   isFour: true,
   networkAddrs: {
     [NetworkID.Mainnet]: {
-      bondAddress: "0x02332593E52798e5e795FA77fd24D95a716B2bB0", //HectorBondStakeDepository5  0xb26be27f6f980efb07ae757d0a6a372671eacf7f
+      bondAddress: "0xb26be27f6f980efb07ae757d0a6a372671eacf7f", //HectorBondStakeDepository5  0xb26be27f6f980efb07ae757d0a6a372671eacf7f
       reserveAddress: "0x82f0B8B456c1A451378467398982d4834b6829c1", //mim
     },
     [NetworkID.Testnet]: {
@@ -237,10 +237,10 @@ export const mim4_v2 = new StableBond({
   bondContractABI: MimBondContract,
   isFour: true,
   isTotal: true,
-  oldfourAddress: "0x02332593E52798e5e795FA77fd24D95a716B2bB0", //HectorBondStakeDepository5   0xb26be27f6f980efb07ae757d0a6a372671eacf7f
+  oldfourAddress: "0xb26be27f6f980efb07ae757d0a6a372671eacf7f", //HectorBondStakeDepository5   0xb26be27f6f980efb07ae757d0a6a372671eacf7f
   networkAddrs: {
     [NetworkID.Mainnet]: {
-      bondAddress: "0x23a52F2598c59103E74CA4391c678950bD538857", //HectorBondStakeDepository6 0x8565f642180fE388F942460B66ABa9c2ca7F02Ed
+      bondAddress: "0x8565f642180fE388F942460B66ABa9c2ca7F02Ed", //HectorBondStakeDepository6 0x8565f642180fE388F942460B66ABa9c2ca7F02Ed
       reserveAddress: "0x82f0B8B456c1A451378467398982d4834b6829c1", //mim
     },
     [NetworkID.Testnet]: {
@@ -263,7 +263,7 @@ export const mim = new StableBond({
   isTotal: true,
   networkAddrs: {
     [NetworkID.Mainnet]: {
-      bondAddress: "0xd77DD827AbFfd6c5052ba8dDB706d97511cc1134", //HectorBondDepositoryV2-1  0xa695750b8439AB2AfBd88310946C99747C5B3A2E
+      bondAddress: "0xa695750b8439AB2AfBd88310946C99747C5B3A2E", //HectorBondDepositoryV2-1  0xa695750b8439AB2AfBd88310946C99747C5B3A2E
       reserveAddress: "0x82f0B8B456c1A451378467398982d4834b6829c1",  //mim
     },
     [NetworkID.Testnet]: {
@@ -286,7 +286,7 @@ export const frax = new StableBond({
   isTotal: true,
   networkAddrs: {
     [NetworkID.Mainnet]: {
-      bondAddress: "0x2E33D50399bE9aefdEe1429eA9903B48Ee0b9ADA",  //HectorBondDepositoryV2-2  0xA4E87A25bC9058e4eC193151558c3c5D02cebE31
+      bondAddress: "0xA4E87A25bC9058e4eC193151558c3c5D02cebE31",  //HectorBondDepositoryV2-2  0xA4E87A25bC9058e4eC193151558c3c5D02cebE31
       reserveAddress: "0xdc301622e621166bd8e82f2ca0a26c13ad0be355",  //frax
     },
     [NetworkID.Testnet]: {
@@ -310,7 +310,7 @@ export const frax4 = new StableBond({
   isFour: true,
   networkAddrs: {
     [NetworkID.Mainnet]: {
-      bondAddress: "0xDF5A9F49147F8bc6a919574907D0AfC0fa1b8572", //HectorBondStakeDepository7  0xC798e6A22996C554739Df607B7eF1d6d435FDBd9
+      bondAddress: "0xC798e6A22996C554739Df607B7eF1d6d435FDBd9", //HectorBondStakeDepository7  0xC798e6A22996C554739Df607B7eF1d6d435FDBd9
       reserveAddress: "0xdc301622e621166bd8e82f2ca0a26c13ad0be355", //frax
     },
     [NetworkID.Testnet]: {
@@ -332,8 +332,8 @@ export const hec_dai = new LPBond({
   reserveContract: ReserveHecDaiContract,
   networkAddrs: {
     [NetworkID.Mainnet]: {
-      bondAddress: "0xA1224c353cdCB03eB70FbA44dADC137F39E5EF7d",  //HectorBondDepository4
-      reserveAddress: "0xbc0eecdA2d8141e3a26D2535C57cadcb1095bca9", //UniswapV2Pair-1
+      bondAddress: "0xA1224c353cdCB03eB70FbA44dADC137F39E5EF7d",  //HectorBondDepository4   0xA1224c353cdCB03eB70FbA44dADC137F39E5EF7d
+      reserveAddress: "0xbc0eecdA2d8141e3a26D2535C57cadcb1095bca9", //UniswapV2Pair-1  0xbc0eecdA2d8141e3a26D2535C57cadcb1095bca9
     },
     [NetworkID.Testnet]: {
       bondAddress: "0x329f2031741B635143652B48129572A39FDdF3cA",
@@ -355,7 +355,7 @@ export const hec_dai_v2 = new LPBond({
   bondIconSvg: DaiImg,
   bondContractABI: BondHecDaiContract,
   reserveContract: ReserveHecDaiContract,
-  fourAddress: "0xcef43B2143FEEBdf2F3d5D069e8F84b2d1258C8a",  //HectorBondStakeDepository8  0xfF40F40E376030394B154dadcB4173277633b405
+  fourAddress: "0xfF40F40E376030394B154dadcB4173277633b405",  //HectorBondStakeDepository8  0xfF40F40E376030394B154dadcB4173277633b405
   networkAddrs: {
     [NetworkID.Mainnet]: {
       bondAddress: "0x6c9b3a47a28a39fea65e99d97895e717df1706d0", //HectorBondDepository5

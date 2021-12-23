@@ -48,10 +48,10 @@ function BondRedeem({ bond }) {
   }, []);
 
   let isFour = false;
-  let reward = "VNO";
+  let reward = "ORN";
   if (bond.isFour) {
     isFour = true;
-    reward = "sVNO";
+    reward = "sORN";
   }
 
   return (

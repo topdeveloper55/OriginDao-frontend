@@ -262,7 +262,7 @@
 }
 
 .app.dark .MuiPaper-root.hec-card {
-	background: #0C0C0C;
+	background: #342b8d;
 	border: 1px solid #FF9900;
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
@@ -381,7 +381,7 @@
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	border-radius: 5px;
-	background: #0C0C0C;
+	background: #0814be;
 }
 .app.dark #hec-menu-button:hover path{
 	fill: #fff;
@@ -402,7 +402,7 @@
 	-webkit-transition: .3s;
 	-o-transition: .3s;
 	transition: .3s;
-	background: #0C0C0C;
+	background: #0814be;
 }
 
 .app.dark .pending-txn-container .MuiButton-label span {

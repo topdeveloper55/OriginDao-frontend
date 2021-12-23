@@ -88,7 +88,7 @@ export const loadAppDetails = createAsyncThunk(
     const totalSupply = parseFloat(graphData.data.protocolMetrics[0].totalSupply);
     const marketCap = marketPrice * circSupply;
     const marketPriceString = marketPrice ? "$" + marketPrice.toFixed(2) : "";
-    document.title = `VenosDAO - ${marketPriceString}`;
+    document.title = `OriginDAO - ${marketPriceString}`;
     if (!provider) {
       console.error("failed to connect to provider, please connect your wallet");
       return {

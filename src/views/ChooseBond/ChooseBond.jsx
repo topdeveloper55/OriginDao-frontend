@@ -92,7 +92,7 @@ function ChooseBond() {
               <Grid item xs={6} className={`hec-price`}>
                 <Box textAlign={`${isVerySmallScreen ? "right" : "center"}`}>
                   <Typography variant="h5" color="textSecondary">
-                    VNO Price
+                    ORN Price
                   </Typography>
                   <Typography variant="h4">
                     {isAppLoading ? <Skeleton width="100px" /> : formatCurrency(marketPrice, 2)}
@@ -120,7 +120,7 @@ function ChooseBond() {
                         .map(bond => (
                           <BondTableData key={bond.name} bond={bond} />
                         ))}
-                        {/* {bonds
+                      {/* {bonds
                         .filter(bond => bond.displayName === 'DAI' && bond.isFour)
                         .map(bond => (
                           <BondTableData key={bond.name} bond={bond} />
@@ -143,7 +143,7 @@ function ChooseBond() {
                     <BondDataCard key={bond.name} bond={bond} />
                   </Grid>
                 ))}
-                {/* {bonds
+              {/* {bonds
                 .filter(bond => bond.isFour && bond.displayName === 'DAI')
                 .map(bond => (
                   <Grid item xs={12} key={bond.name}>
@@ -180,7 +180,7 @@ function ChooseBond() {
                         .map(bond => (
                           <BondTableData key={bond.name} bond={bond} />
                         ))}
-                        {/* {bonds
+                      {/* {bonds
                         .filter(bond => !bond.isFour && bond.displayName === 'DAI')
                         .map(bond => (
                           <BondTableData key={bond.name} bond={bond} />
@@ -203,7 +203,7 @@ function ChooseBond() {
                     <BondDataCard key={bond.name} bond={bond} />
                   </Grid>
                 ))}
-                {/* {bonds
+              {/* {bonds
                 .filter(bond => !bond.isFour && bond.displayName === 'DAI')
                 .map(bond => (
                   <Grid item xs={12} key={bond.name}>
