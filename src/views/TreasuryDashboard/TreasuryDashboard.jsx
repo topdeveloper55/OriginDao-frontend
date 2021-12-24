@@ -68,14 +68,16 @@ function TreasuryDashboard() {
         Object.entries(entry).reduce((obj, [key, value]) => ((obj[key] = parseFloat(value)), obj), {}),
       );
       metrics = metrics.filter(pm => pm.treasuryMarketValue > 0);
-      setData(metrics);
+      // setData(metrics);
+      setData(null);
 
       let staked = r.data.protocolMetrics.map(entry => ({
         staked: (parseFloat(entry.sHecCirculatingSupply) / parseFloat(entry.hecCirculatingSupply)) * 100,
         timestamp: entry.timestamp,
       }));
       staked = staked.filter(pm => pm.staked < 100);
-      setStaked(staked);
+      // setStaked(staked);
+      setStaked(null);
 
       let runway = metrics.filter(pm => pm.runwayCurrent > 5);
       setRunway(runway);

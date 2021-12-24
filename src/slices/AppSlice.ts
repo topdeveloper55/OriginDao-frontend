@@ -91,13 +91,14 @@ export const loadAppDetails = createAsyncThunk(
     document.title = `OriginDAO - ${marketPriceString}`;
     if (!provider) {
       console.error("failed to connect to provider, please connect your wallet");
-      return {
-        stakingTVL,
-        marketPrice,
-        marketCap,
-        circSupply,
-        totalSupply,
-      };
+      // return {
+      //   stakingTVL,
+      //   marketPrice,
+      //   marketCap,
+      //   circSupply,
+      //   totalSupply,
+      // };
+      return null;
     }
     const currentBlock = await provider.getBlockNumber();
 
@@ -116,21 +117,22 @@ export const loadAppDetails = createAsyncThunk(
     const currentIndex = await stakingContract.index();
     const endBlock = epoch.endBlock;
 
-    return {
-      currentIndex: ethers.utils.formatUnits(currentIndex, "gwei"),  
-      currentBlock,
-      fiveDayRate,
-      old_fiveDayRate,
-      stakingAPY,
-      stakingTVL,
-      stakingRebase,
-      old_stakingRebase,
-      marketCap,
-      marketPrice,
-      circSupply,
-      totalSupply,
-      endBlock,
-    } as IAppData;
+    // return {
+    //   currentIndex: ethers.utils.formatUnits(currentIndex, "gwei"),  
+    //   currentBlock,
+    //   fiveDayRate,
+    //   old_fiveDayRate,
+    //   stakingAPY,
+    //   stakingTVL,
+    //   stakingRebase,
+    //   old_stakingRebase,
+    //   marketCap,
+    //   marketPrice,
+    //   circSupply,
+    //   totalSupply,
+    //   endBlock,
+    // } as IAppData;
+    return null;
   },
 );
 

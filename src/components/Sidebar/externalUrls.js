@@ -10,7 +10,8 @@ import { AccountBalanceOutlined, MonetizationOnOutlined } from "@material-ui/ico
 const externalUrls = [
   {
     title: "Buy on SpookySwap",
-    url: "https://spookyswap.finance/swap?inputCurrency=0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E&outputCurrency=0x5C4FDfc5233f935f20D2aDbA572F770c2E377Ab0",
+    // url: "https://spookyswap.finance/swap?inputCurrency=0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E&outputCurrency=0x5C4FDfc5233f935f20D2aDbA572F770c2E377Ab0",
+    url: "#",
     icon: <SvgIcon viewBox="0 0 64 64" color="primary" component={SpookySwapIcon} />,
     label: ""
   },

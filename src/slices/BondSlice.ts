@@ -176,17 +176,30 @@ export const calcBondDetails = createAsyncThunk(
       bondDiscount = -0.1;
     }
 
+    // return {
+    //   bond: bond.name,
+    //   bondDiscount,
+    //   debtRatio,
+    //   bondQuote,
+    //   purchased,
+    //   vestingTerm: Number(terms.vestingTerm),
+    //   maxBondPrice: maxBondPrice / Math.pow(10, 9),
+    //   bondPrice: bondPrice,
+    //   marketPrice: 550,
+    //   isSoldOut: isSoldOut,
+    // };
+
     return {
-      bond: bond.name,
-      bondDiscount,
-      debtRatio,
-      bondQuote,
-      purchased,
-      vestingTerm: Number(terms.vestingTerm),
-      maxBondPrice: maxBondPrice / Math.pow(10, 9),
-      bondPrice: bondPrice,
-      marketPrice: 550,
-      isSoldOut: isSoldOut,
+      bond: "",
+      bondDiscount: 0,
+      debtRatio: 0,
+      bondQuote: 0,
+      purchased: 0,
+      vestingTerm: 0,
+      maxBondPrice: 0,
+      bondPrice: 0,
+      marketPrice: 0,
+      isSoldOut: false,
     };
   },
 );

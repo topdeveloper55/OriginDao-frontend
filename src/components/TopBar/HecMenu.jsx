@@ -83,7 +83,7 @@ function HecMenu() {
       onMouseLeave={e => handleClick(e)}
       id="hec-menu-button-hover"
     >
-      <Button id="hec-menu-button" size="large" variant="contained" color="secondary" title="HEC" aria-describedby={id}>
+      <Button id="hec-menu-button" size="large" variant="contained" color="secondary" title="ORN" aria-describedby={id}>
         <SvgIcon component={InfoIcon} color="primary" />
         <Typography>ORN</Typography>
       </Button>
@@ -95,7 +95,8 @@ function HecMenu() {
               <Paper className="hec-menu" elevation={1}>
                 <Box component="div" className="buy-tokens">
                   <Link
-                    href={`https://spookyswap.finance/swap?inputCurrency=${daiAddress}&outputCurrency=${HEC_ADDRESS}`}
+                    // href={`https://spookyswap.finance/swap?inputCurrency=${daiAddress}&outputCurrency=${HEC_ADDRESS}`}
+                    href="#"
                     target="_blank"
                     rel="noreferrer"
                   >

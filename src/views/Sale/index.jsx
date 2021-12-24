@@ -1,71 +1,58 @@
 import { useEffect, useState } from "react";
 import { ethers } from "ethers";
-import { Box, Button, Typography, Paper, Divider, Link, Grid } from "@material-ui/core";
+import { Box, Button, Typography, Paper, Divider, Link, Grid, Input } from "@material-ui/core";
 import { useAddress, useWeb3Context } from "src/hooks/web3Context";
 import logo from "./logo.png";
 import title from "./title.png";
 import { abi as vnoSale } from "../../abi/VNOSale.json";
-import { abi as daiABI } from "../../abi/DAI.json";
+import { abi as usdcABI } from "../../abi/DAI.json";
+import { abi as ornABI } from "../../abi/ORN.json";
 import { info } from "../../slices/MessagesSlice";
 
-const devAddress = "0xaF9Ce5fbC97cdA0B3287d1043Dfba36edE47bBc3";
-const lbeAddress = "0xD8a7F51eF8a4c7011166D5fABcf4f751d084b7a7";
-const daiAddress = "0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E";
+const ownerAddress = "0x93B95dBFB7FDb8AE6ADa17207b595c8598497a50";
+const lbeAddress = "0xd5c15ea4f57d03f9Ca4f16C023267Dd29756Ae7f";
+const usdcAddress = "0x0d9A547a61C09D82387F4a8d15597f214254D9F2";
+const ornAddress = "0x03b3F3bF3c0DaFEFD698C9AE1aC81312e0B55E2a";
 
 let timeInterval;
 
 function ConnectMenu() {
   const { connect, disconnect, hasCachedProvider, provider, chainID, connected, uri } = useWeb3Context();
   const address = useAddress();
-  const [anchorEl, setAnchorEl] = useState(null);
   const [isConnected, setConnected] = useState(connected);
   const [startStatus, setStartStatus] = useState(false);
   const [approveStatus, setApproveStatus] = useState(false);
-  const [depositStatus, setDepositStatus] = useState(false);
-  const [claimStatus, setClaimStatus] = useState(false);
-  const [totalLeft, setTotalLeft] = useState(600);
-
-  let buttonText = "Connect Wallet";
-  let clickFunc = connect;
-
-  // const lbeContract = new ethers.Contract(lbeAddress, vnoSale, provider);
-
-  if (isConnected) {
-    buttonText = "Disconnect";
-    clickFunc = disconnect;
-  }
+  const [buyStatus, setBuyStatus] = useState(false);
+  const [totalLeft, setTotalLeft] = useState(40000);
+  const [soldout, setSoldoutStatus] = useState(false);
+  const [value, setValue] = useState(50);
 
   useEffect(() => {
     setConnected(connected);
-  }, [web3, connected]);
+  }, [connected]);
+
+  const handleInputChange = event => {
+    setValue(event.target.value === "" ? "" : Number(event.target.value));
+  };
 
   const handleApprove = async () => {
-    const daiContract = new ethers.Contract(daiAddress, daiABI, provider.getSigner());
-    try {
-      const res = await daiContract.approve(lbeAddress, "500000000000000000000");
-      if (res) window.alert("approve success");
-      else window.alert("approve failed");
-    } catch (err) {
-      console.log("err:", err);
+    const usdcContract = new ethers.Contract(usdcAddress, usdcABI, provider.getSigner());
+    if(value >= 30 && value <= 100) {
+      try {
+        await usdcContract.approve(lbeAddress, value * 10 * 1000000);
+        window.alert("approve success");
+      } catch (err) {
+        console.log("err:", err);
+      }
     }
+    else window.alert("You can only buy 30-100 tokens");
   };
 
-  const handleDeposit = async () => {
+  const handleBuy = async () => {
     const lbeContract = new ethers.Contract(lbeAddress, vnoSale, provider.getSigner());
     try {
-      const res = await lbeContract.deposite();
-      console.log("res:", res);
-      window.alert("deposite success");
-    } catch (err) {
-      console.log("err:", err);
-    }
-  };
-
-  const handleClaim = async () => {
-    const lbeContract = new ethers.Contract(lbeAddress, vnoSale, provider.getSigner());
-    try {
-      await lbeContract.claim();
-      window.alert("deposite success");
+      await lbeContract.invest();
+      window.alert("buy success");
     } catch (err) {
       console.log("err:", err);
     }
@@ -75,17 +62,7 @@ function ConnectMenu() {
     const lbeContract = new ethers.Contract(lbeAddress, vnoSale, provider.getSigner());
     try {
       await lbeContract.setStart();
-      window.alert("Liquidity Bootstrap Event started");
-    } catch (err) {
-      console.log("err:", err);
-    }
-  };
-
-  const handleEnd = async () => {
-    const lbeContract = new ethers.Contract(lbeAddress, vnoSale, provider.getSigner());
-    try {
-      await lbeContract.endStart();
-      window.alert("Liquidity Bootstrap Event finished");
+      window.alert("Presale started");
     } catch (err) {
       console.log("err:", err);
     }
@@ -93,54 +70,48 @@ function ConnectMenu() {
 
   const app = async () => {
     console.log("data fetch");
+    const ornContract = new ethers.Contract(ornAddress, ornABI, provider.getSigner());
     const lbeContract = new ethers.Contract(lbeAddress, vnoSale, provider.getSigner());
-    const daiContract = new ethers.Contract(daiAddress, daiABI, provider.getSigner());
+    const usdcContract = new ethers.Contract(usdcAddress, usdcABI, provider.getSigner());
     try {
-      const left = await lbeContract.left_elements();
-      const res = await lbeContract.getStatus();
-      const appSta = await daiContract.allowance(address, lbeAddress);
-      const addSta = await lbeContract.getAddressStatus();
-      setStartStatus(res);
-      setTotalLeft(Number(left));
-      if (Number(left) === 0) {
-        if(addSta === 1) {
-          setApproveStatus(true);
-          setDepositStatus(true);
-          setClaimStatus(false);
-        }
-        else {
-          setApproveStatus(true);
-          setDepositStatus(true);
-          setClaimStatus(true);
-        }
+      let left = await ornContract.balanceOf(lbeAddress);
+      left = Number(left) / 1000000000;
+      setTotalLeft(left);
+      if (left < 30) {
+        setApproveStatus(true);
+        setBuyStatus(true);
+        setSoldoutStatus(true);
       } else {
+        setSoldoutStatus(false);
+        let res = await lbeContract.getStatus();
+        setStartStatus(res);
         if (!res) {
+          console.log("status4");
           setApproveStatus(true);
-          setDepositStatus(true);
-          setClaimStatus(true);
+          setBuyStatus(true);
         } else {
-          if (Number(appSta) > 0) {
+          res = await lbeContract.getInvestStatus(address);
+          console.log("res:" + res);
+          if (res) {
+            console.log("status3");
             setApproveStatus(true);
-            setDepositStatus(false);
-            setClaimStatus(true);
-          } else if (addSta === 0) {
-            setApproveStatus(false);
-            setDepositStatus(true);
-            setClaimStatus(true);
-          } else if (addSta === 1) {
-            setApproveStatus(true);
-            setDepositStatus(true);
-            setClaimStatus(false);
+            setBuyStatus(true);
           } else {
-            setApproveStatus(true);
-            setDepositStatus(true);
-            setClaimStatus(true);
+            res = await usdcContract.allowance(address, lbeAddress);
+            if (Number(res) > 0) {
+              console.log("status2");
+              setApproveStatus(true);
+              setBuyStatus(false);
+            } else {
+              console.log("status1");
+              setApproveStatus(false);
+              setBuyStatus(true);
+            }
           }
         }
       }
     } catch (err) {
       console.log("error: ", err);
-      // window.alert("Error occured");
     }
   };
 
@@ -157,8 +128,7 @@ function ConnectMenu() {
         }, 2000);
     } else {
       setApproveStatus(true);
-      setDepositStatus(true);
-      setClaimStatus(true);
+      setBuyStatus(true);
     }
   }, [connected, address]);
 
@@ -170,122 +140,103 @@ function ConnectMenu() {
 
   return (
     <>
-      {/* <Box
-        display="flex"
-        alignItems="center"
-        justifyContent="flex-end"
-        sx={{ width: "100%", height: "60px", backgroundColor: "white", paddingRight: "70px" }}
-      >
-        <Box sx={{ position: "absolute", left: "50px" }}>
-          <img src={logo} alt="Logo" style={{ width: "50px", height: "50px" }} />
-        </Box>
-        {address === devAddress && (
-          <Box display="flex" alignItems="center" justifyContent="space-around" marginRight={5}>
-            <Button
-              variant="contained"
-              color="success"
-              size="large"
-              disabled={startStatus}
-              style={{
-                backgroundColor: startStatus ? "#dddddd" : "#333333",
-                borderRadius: "20px",
-                marginRight: "10px",
-                color: "white",
-                width: "160px",
-              }}
-              onClick={handleStart}
-            >
-              Start
-            </Button>
-            <Button
-              variant="contained"
-              color="success"
-              size="large"
-              disabled={!startStatus}
-              style={{
-                backgroundColor: startStatus ? "#333333" : "#dddddd",
-                borderRadius: "20px",
-                color: "white",
-                width: "160px",
-              }}
-              onClick={handleEnd}
-            >
-              End
-            </Button>
-          </Box>
-        )}
-        <Box sx={{ marginRight: "20px" }}>
-          <Typography>
-            {address ? `${address.slice(0, 6)}...${address.slice(address.length - 4, address.length)}` : "No Balance"}
-          </Typography>
-        </Box>
-        <Button
-          variant="contained"
-          color="success"
-          size="small"
-          onClick={clickFunc}
-          style={{ backgroundColor: "#fcebfa", borderRadius: "20px", padding: "20px" }}
-        >
-          {buttonText}
-        </Button>
-      </Box> */}
       <Grid container justifyContent="center" alignItems="center">
         <Grid item xs={12} sm={8} md={6} style={{ textAlign: "center" }}>
-          <Box marginTop={4}>
-          {/* {totalLeft === 0 && <Typography style={{color: "red"}} variant="h1">Sold Out</Typography>} */}
-            <Box mb={5}>
-              <Typography variant="h1" style={{color: "black", fontWeight: "bold", fontSize: "70px"}}>Origin DAO</Typography>
+          <Box marginTop={1}>
+            {address === ownerAddress && (
+              <Box>
+                <Button
+                  variant="contained"
+                  color="success"
+                  disabled={startStatus}
+                  style={{
+                    backgroundColor: startStatus ? "#dddddd" : "#111111",
+                    borderRadius: "5px",
+                    color: "white",
+                    width: "150px",
+                  }}
+                  onClick={handleStart}
+                >
+                  Start
+                </Button>
+              </Box>
+            )}
+
+            {soldout && (
+              <Typography style={{ color: "red" }} variant="h1">
+                Sold Out
+              </Typography>
+            )}
+            <Box mb={3}>
+              <Typography variant="h1" style={{ color: "black", fontWeight: "bold", fontSize: "70px" }}>
+                Origin DAO
+              </Typography>
+            </Box>
+            <Box display="flex" justifyContent="space-around" mb={1}>
+              <Typography variant="h3" style={{ color: "blue" }}>
+                Total Left Amount:
+              </Typography>
+              <Typography variant="h3" style={{ color: "blue" }}>
+                {totalLeft}
+              </Typography>
+            </Box>
+            <Box display="flex" justifyContent="space-around" mb={3}>
+              <Typography variant="h3" style={{ color: "blue" }}>
+                Token Price:
+              </Typography>
+              <Typography variant="h3" style={{ color: "blue" }}>
+                10USDC/token
+              </Typography>
             </Box>
             <Box mb={5}>
-              <Typography style={{color: "black"}}>Welcome to the Liquidity Bootstrap Event of Origin DAO</Typography>
+              <Typography style={{ color: "blue" }}>Updates will be posted in the discord group</Typography>
             </Box>
             <Box>
-              <Typography style={{color: "blue", marginBottom: "20px"}}>only 999 slots | ends in 48 hours</Typography>
-              <Typography style={{color: "blue"}}>Updates will be posted in the discord group</Typography>
+              <Typography style={{ color: "red", marginBottom: "10px" }} variant="h4">
+                You can only buy 30-100 tokens:
+              </Typography>
+              <Input
+                style={{
+                  border: "10px",
+                  backgroundColor: "#11110f8c",
+                  borderRadius: "5px",
+                  fontSize: "40px",
+                  width: "100px",
+                  height: "60px",
+                }}
+                value={value}
+                onChange={handleInputChange}
+              />
             </Box>
           </Box>
-          <Box marginTop={6} display="flex" justifyContent="space-around">
+          <Box marginTop={1} display="flex" justifyContent="space-around">
             <Button
               variant="contained"
               color="success"
               disabled={approveStatus}
               style={{
-                backgroundColor: approveStatus ? "#dddddd" : "#001bc8",
-                borderRadius: "20px",
+                backgroundColor: approveStatus ? "#dddddd" : "#1b1bc8",
+                borderRadius: "5px",
                 color: "white",
                 width: "150px",
               }}
               onClick={handleApprove}
             >
-              Approve DAI
+              Approve USDC
             </Button>
             <Button
               variant="contained"
               color="success"
-              disabled={depositStatus}
+              disabled={buyStatus}
               style={{
-                backgroundColor: depositStatus ? "#dddddd" : "#001bc8",
-                borderRadius: "20px",
+                backgroundColor: buyStatus ? "#dddddd" : "#1b1bc8",
+                borderRadius: "5px",
                 color: "white",
                 width: "150px",
               }}
-              onClick={handleDeposit}
+              onClick={handleBuy}
             >
-              Deposit
-            </Button>
-            <Button
-              variant="contained"
-              color="success"
-              disabled={claimStatus}
-              style={{
-                backgroundColor: claimStatus ? "#dddddd" : "#001bc8",
-                borderRadius: "20px",
-                color: "white",
-                width: "150px",
-              }}
-              onClick={handleClaim}
-            >
-              Claim
+              Buy
             </Button>
           </Box>
         </Grid>

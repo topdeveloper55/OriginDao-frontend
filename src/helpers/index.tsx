@@ -20,8 +20,8 @@ export async function getMarketPrice({ networkID, provider }: IBaseAsyncThunk) {
   const marketPrice = reserves[1] / reserves[0];
 
   // commit('set', { marketPrice: marketPrice / Math.pow(10, 9) });
-  return marketPrice;
-  // return 12000000000;
+  // return marketPrice;
+  return 0;
 }
 
 export async function getTokenPrice(tokenId = "hector-dao") {
