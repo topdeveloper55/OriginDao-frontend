@@ -3,7 +3,6 @@ import { ethers } from "ethers";
 import { Box, Button, Typography, Paper, Divider, Link, Grid, Input } from "@material-ui/core";
 import { useAddress, useWeb3Context } from "src/hooks/web3Context";
 import logo from "./logo.png";
-import title from "./title.png";
 import { abi as vnoSale } from "../../abi/VNOSale.json";
 import { abi as usdcABI } from "../../abi/DAI.json";
 import { abi as ornABI } from "../../abi/ORN.json";
