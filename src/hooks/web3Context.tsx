@@ -6,6 +6,7 @@ import { IFrameEthereumProvider } from "@ledgerhq/iframe-provider";
 import { EnvHelper } from "../helpers/Environment";
 import { NodeHelper } from "src/helpers/NodeHelper";
 import { error } from "src/slices/MessagesSlice";
+import store from "src/store";
 
 /**
  * kept as function to mimic `getMainnetURI()`
@@ -180,6 +181,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
     const validNetwork = _checkNetwork(chainId);
     if (!validNetwork) {
       console.error("Wrong network, please switch to fantom");
+      store.dispatch(error("Wrong network, please switch to fantom"));
       error("Please connect your wallet!");
       return;
     }

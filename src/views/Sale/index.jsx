@@ -3,15 +3,14 @@ import { ethers } from "ethers";
 import { Box, Button, Typography, Paper, Divider, Link, Grid, Input } from "@material-ui/core";
 import { useAddress, useWeb3Context } from "src/hooks/web3Context";
 import logo from "./logo.png";
-import { abi as vnoSale } from "../../abi/VNOSale.json";
-import { abi as usdcABI } from "../../abi/DAI.json";
+import { abi as ornSale } from "../../abi/ORNSale.json";
+import { abi as usdcABI } from "../../abi/USDC.json";
 import { abi as ornABI } from "../../abi/ORN.json";
-import { info } from "../../slices/MessagesSlice";
 
-const ownerAddress = "0x93B95dBFB7FDb8AE6ADa17207b595c8598497a50";
-const lbeAddress = "0xd5c15ea4f57d03f9Ca4f16C023267Dd29756Ae7f";
-const usdcAddress = "0x0d9A547a61C09D82387F4a8d15597f214254D9F2";
-const ornAddress = "0x03b3F3bF3c0DaFEFD698C9AE1aC81312e0B55E2a";
+const ownerAddress = "0xb9e660505E8823F1c10Db4Be1D6D51953191234c";
+const lbeAddress = "0xea351E9b63E3E1b330C1690C2780447ab10Ca2E9";
+const usdcAddress = "0xF968c78bFF37FB03e79eB8EEc6B6429Ee4463fD3";
+const ornAddress = "0x4Ebf77d3e428554B589929A45A782EA250c58Db9";
 
 let timeInterval;
 
@@ -48,7 +47,7 @@ function ConnectMenu() {
   };
 
   const handleBuy = async () => {
-    const lbeContract = new ethers.Contract(lbeAddress, vnoSale, provider.getSigner());
+    const lbeContract = new ethers.Contract(lbeAddress, ornSale, provider.getSigner());
     try {
       await lbeContract.invest();
       window.alert("buy success");
@@ -58,7 +57,7 @@ function ConnectMenu() {
   };
 
   const handleStart = async () => {
-    const lbeContract = new ethers.Contract(lbeAddress, vnoSale, provider.getSigner());
+    const lbeContract = new ethers.Contract(lbeAddress, ornSale, provider.getSigner());
     try {
       await lbeContract.setStart();
       window.alert("Presale started");
@@ -70,7 +69,7 @@ function ConnectMenu() {
   const app = async () => {
     console.log("data fetch");
     const ornContract = new ethers.Contract(ornAddress, ornABI, provider.getSigner());
-    const lbeContract = new ethers.Contract(lbeAddress, vnoSale, provider.getSigner());
+    const lbeContract = new ethers.Contract(lbeAddress, ornSale, provider.getSigner());
     const usdcContract = new ethers.Contract(usdcAddress, usdcABI, provider.getSigner());
     try {
       let left = await ornContract.balanceOf(lbeAddress);
