@@ -7,14 +7,16 @@ import { ReactComponent as StakeIcon } from "../../assets/icons/stake.svg";
 import { ReactComponent as BondIcon } from "../../assets/icons/bond.svg";
 import { ReactComponent as GlobeIcon } from "../../assets/icons/globe.svg";
 import { ReactComponent as DashboardIcon } from "../../assets/icons/dashboard.svg";
+import { ReactComponent as BuyIcon } from "../../assets/icons/globe.svg";
 import { ReactComponent as SaleIcon } from "../../assets/icons/arrow-up.svg";
-import { ReactComponent as WrapIcon } from "../../assets/icons/wrap.svg";
-// import { ReactComponent as HectorIcon } from "../../assets/icons/logo.svg";
+import { ReactComponent as Stake6Icon } from "../../assets/icons/wrap.svg";
+import { ReactComponent as LendIcon } from "../../assets/icons/hamburger.svg";
+import { ReactComponent as LandIcon } from "../../assets/icons/sun.svg";
 import logo from "./logo.png";
 import { trim, shorten } from "../../helpers";
 import { useAddress, useWeb3Context } from "src/hooks/web3Context";
 import useBonds from "../../hooks/Bonds";
-import { Paper, Link, Box, Typography, SvgIcon } from "@material-ui/core";
+import { Paper, Link, Box, Typography, SvgIcon, Button } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 import "./sidebar.scss";
 
@@ -82,126 +84,130 @@ function NavContent() {
                   Community Sale
                 </Typography>
               </Link>
+
               <Link
                 component={NavLink}
                 id="dash-nav"
-                to="/dashboard"
+                to="/lands"
                 isActive={(match, location) => {
-                  return checkPage(match, location, "dashboard");
+                  return checkPage(match, location, "sale");
                 }}
                 className={`button-dapp-menu ${isActive ? "active" : ""}`}
               >
                 <Typography variant="h6">
+                  <SvgIcon color="primary" component={LandIcon} />
+                  Buy Lands
+                </Typography>
+              </Link>
+
+              <Typography className="submenu">My lands &nbsp;&nbsp;&nbsp;<span style={{fontSize: "12px"}}> Comming soon</span></Typography>
+              <Typography className="submenu">Rewards &nbsp;&nbsp;&nbsp;<span style={{fontSize: "12px"}}> Comming soon</span></Typography>
+
+              <Link
+                component={NavLink}
+                id="dash-nav"
+                to="/sale"
+                isActive={(match, location) => {
+                  return checkPage(match, location, "dashboard");
+                }}
+                className="disable-link"
+              >
+                <Typography variant="h6">
                   <SvgIcon color="primary" component={DashboardIcon} />
                   Dashboard
+                </Typography>
+                <Typography variant="caption" style={{ marginLeft: "8px" }}>
+                  Coming soon
+                </Typography>
+              </Link>
+
+              <Link
+                component={NavLink}
+                id="dash-nav"
+                to="/sale"
+                isActive={(match, location) => {
+                  return checkPage(match, location, "dashboard");
+                }}
+                className="disable-link"
+              >
+                <Typography variant="h6">
+                  <SvgIcon color="primary" component={BuyIcon} />
+                  Buy ORN
+                </Typography>
+                <Typography variant="caption" style={{ marginLeft: "8px" }}>
+                  Coming soon
                 </Typography>
               </Link>
 
               <Link
                 component={NavLink}
                 id="stake-nav"
-                to="/"
+                to="/sale"
                 isActive={(match, location) => {
                   return checkPage(match, location, "stake");
                 }}
-                className={`button-dapp-menu ${isActive ? "active" : ""}`}
+                className="disable-link"
               >
                 <Typography variant="h6">
                   <SvgIcon color="primary" component={StakeIcon} />
                   Stake
                 </Typography>
+                <Typography variant="caption" style={{ marginLeft: "8px" }}>
+                  Coming soon
+                </Typography>
               </Link>
 
               <Link
                 component={NavLink}
-                id="wrap-nav"
-                to="/wrap"
+                id="stake-nav"
+                to="/sale"
                 isActive={(match, location) => {
-                  return checkPage(match, location, "wrap");
+                  return checkPage(match, location, "stake");
                 }}
-                className={`button-dapp-menu ${isActive ? "active" : ""}`}
+                className="disable-link"
               >
                 <Typography variant="h6">
-                  <SvgIcon color="primary" component={WrapIcon} />
-                  Wrap
+                  <SvgIcon color="primary" component={Stake6Icon} />
+                  Stake(6,6)
+                </Typography>
+                <Typography variant="caption" style={{ marginLeft: "8px" }}>
+                  Coming soon
                 </Typography>
               </Link>
 
               <Link
                 component={NavLink}
                 id="bond-nav"
-                to="/bonds"
+                to="/sale"
                 isActive={(match, location) => {
                   return checkPage(match, location, "bonds");
                 }}
-                className={`button-dapp-menu ${isActive ? "active" : ""}`}
+                className="disable-link"
               >
                 <Typography variant="h6">
                   <SvgIcon color="primary" component={BondIcon} />
                   Bond
                 </Typography>
+                <Typography variant="caption" style={{ marginLeft: "8px" }}>
+                  Coming soon
+                </Typography>
               </Link>
 
-              {/* <div className="dapp-menu-data discounts">
-                <div className="bond-discounts">
-                  <Typography variant="body2">Bond ROI (4 days)</Typography>
-                  {bonds
-                    .filter(bond => bond.isFour)
-                    .map((bond, i) => (
-                      <Link component={NavLink} to={`/bonds/${bond.name}`} key={i} className={"bond"}>
-                        {!bond.bondDiscount ? (
-                          <Skeleton variant="text" width={"150px"} />
-                        ) : (
-                          <Typography variant="body2">
-                            {bond.isFour ? bond.displayName + " (4, 4)" : bond.displayName}
-                            <span className="bond-pair-roi">
-                              {bond.isSoldOut ? (
-                                "Sold Out"
-                              ) : (
-                                <>{bond.bondDiscount && trim(bond.bondDiscount * 100 + stakingRebasePercentage, 2)}%</>
-                              )}
-                            </span>
-                          </Typography>
-                        )}
-                      </Link>
-                    ))}
-                  <Typography variant="body2" style={{ paddingTop: "16px" }}>
-                    Bond ROI (5 days)
-                  </Typography>
-                  {bonds
-                    .filter(bond => !bond.isFour)
-                    .map((bond, i) => (
-                      <Link component={NavLink} to={`/bonds/${bond.name}`} key={i} className={"bond"}>
-                        {!bond.bondDiscount ? (
-                          <Skeleton variant="text" width={"150px"} />
-                        ) : (
-                          <Typography variant="body2">
-                            {bond.isFour ? bond.displayName + " (4, 4)" : bond.displayName}
-                            <span className="bond-pair-roi">
-                              {bond.isSoldOut ? (
-                                "Sold Out"
-                              ) : (
-                                <>{bond.bondDiscount && trim(bond.bondDiscount * 100, 2)}%</>
-                              )}
-                            </span>
-                          </Typography>
-                        )}
-                      </Link>
-                    ))}
-                </div>
-              </div> */}
               <Link
                 component={NavLink}
-                id="calc-nav"
-                to="/calculator"
+                id="bond-nav"
+                to="/sale"
                 isActive={(match, location) => {
-                  return checkPage(match, location, "calculator");
+                  return checkPage(match, location, "bonds");
                 }}
-                className={`button-dapp-menu ${isActive ? "active" : ""}`}
+                className="disable-link"
               >
                 <Typography variant="h6">
-                  <SvgIcon color="primary" component={GlobeIcon} viewBox="0 0 24 24" />
-                  Calculator
+                  <SvgIcon color="primary" component={LendIcon} />
+                  Lend(9,9)
+                </Typography>
+                <Typography variant="caption" style={{ marginLeft: "8px" }}>
+                  Coming soon
                 </Typography>
               </Link>
             </div>
@@ -211,7 +217,7 @@ function NavContent() {
           <div className="dapp-menu-external-links">
             {externalUrls.map(({ url, icon, title, label }, i) => {
               return (
-                <Link key={i} href={url} target="_blank" component={url ? "a" : "span"}>
+                <Link key={i} href={url} target="_blank" className="disable-link">
                   <Typography variant="h6">{icon}</Typography>
                   <Typography variant="h6">{title}</Typography>
                   {label ? (

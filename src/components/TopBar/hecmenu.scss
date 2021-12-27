@@ -45,6 +45,15 @@
     }
   }
 
+  .disable-link  {
+    display: flex;
+    justify-content: start;
+    color: #aaaaaa !important;
+  }
+  
+  .disable-link:hover {
+    cursor: not-allowed !important;
+  }
   .add-tokens {
     margin-bottom: 15px;
     > p {

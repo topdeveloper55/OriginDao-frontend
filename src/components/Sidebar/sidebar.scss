@@ -4,8 +4,30 @@
   border-radius: 0 !important;
 }
 
+.disable-link  {
+  display: flex;
+  justify-content: start;
+  color: #aaaaaa !important;
+}
+
+.disable-link:hover {
+  cursor: not-allowed;
+}
+
 .sidebar > .drawer {
   width: 300px;
+}
+
+.submenu {
+  font-size: 15px !important;
+  margin-left: 66px !important ;
+  font-weight: lighter !important;
+  margin-top: 10px !important;
+  color: #aaaaaa !important;
+}
+
+.submenu:hover {
+  cursor: not-allowed;
 }
 
 .MuiDrawer-paper .MuiPaper-root {
@@ -62,8 +84,8 @@
 }
 
 .dapp-menu-bottom {
-  height: 40vh;
-  min-height: 30vh;
+  height: 30vh;
+  // min-height: 30vh;
 }
 
 .dapp-menu-links {

@@ -241,25 +241,25 @@ function App() {
               <Sale />
             </Route>
 
-            <Route exact path="/dashboard">
+            {/* <Route exact path="/dashboard">
               <TreasuryDashboard />
-            </Route>
+            </Route> */}
 
             <Route exact path="/">
-              <Redirect to="/stake" />
+              <Redirect to="/sale" />
             </Route>
 
-            <Route path="/stake">
+            {/* <Route path="/stake">
               <Stake />
-            </Route>
-            <Route path="/wrap">
+            </Route> */}
+            {/* <Route path="/wrap">
               <Wrap />
-            </Route>
-            <Route path="/calculator">
+            </Route> */}
+            {/* <Route path="/calculator">
               <Calculator />
-            </Route>
+            </Route> */}
 
-            <Route path="/bonds">
+            {/* <Route path="/bonds">
               {bonds.map(bond => {
                 return (
                   <Route exact key={bond.name} path={`/bonds/${bond.name}`}>
@@ -268,9 +268,9 @@ function App() {
                 );
               })}
               <ChooseBond />
-            </Route>
+            </Route> */}
 
-            <Route component={NotFound} />
+            <Route component={Sale} />
           </Switch>
         </div>
       </div>

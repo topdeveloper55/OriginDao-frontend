@@ -96,9 +96,8 @@ function HecMenu() {
                 <Box component="div" className="buy-tokens">
                   <Link
                     // href={`https://spookyswap.finance/swap?inputCurrency=${daiAddress}&outputCurrency=${HEC_ADDRESS}`}
-                    href="#"
-                    target="_blank"
-                    rel="noreferrer"
+                    href="#/sale"
+                    className="disable-link"
                   >
                     <Button size="large" variant="contained" color="secondary" fullWidth>
                       <Typography align="left">
@@ -107,23 +106,11 @@ function HecMenu() {
                     </Button>
                   </Link>
 
-                  {/* <Link
-                    href={`https://swap.spiritswap.finance/#/add/${USDC_ADDRESS}/${HEC_ADDRESS}`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <Button size="large" variant="contained" color="secondary" fullWidth>
-                      <Typography align="left">
-                        Buy on SpiritSwap <SvgIcon component={ArrowUpIcon} htmlColor="#A3A3A3" />
-                      </Typography>
-                    </Button>
-                  </Link> */}
-
-                  <Link component={NavLink} to="/wrap" style={{ textDecoration: "none" }}>
+                  {/* <Link component={NavLink} to="/wrap" style={{ textDecoration: "none" }}>
                     <Button size="large" variant="contained" color="secondary" fullWidth>
                       <Typography align="left">Wrap sORN</Typography>
                     </Button>
-                  </Link>
+                  </Link> */}
                 </Box>
 
                 {isEthereumAPIAvailable ? (
@@ -131,19 +118,19 @@ function HecMenu() {
                     <Divider color="secondary" />
                     <p>ADD TOKEN TO WALLET</p>
                     <Box display="flex" flexDirection="row" justifyContent="space-between">
-                      <Button variant="contained" color="secondary" onClick={addTokenToWallet("HEC", HEC_ADDRESS)}>
+                      <Button disabled variant="contained" color="secondary" onClick={addTokenToWallet("HEC", HEC_ADDRESS)}>
                         <Box sx={{ width: "30px", height: "30px" }}>
                           <img src={logo} alt="Logo" style={{ height: "25px", width: "25px" }} />
                         </Box>
                         <Typography variant="body1">ORN</Typography>
                       </Button>
-                      <Button variant="contained" color="secondary" onClick={addTokenToWallet("sHEC", SHEC_ADDRESS)}>
+                      <Button disabled variant="contained" color="secondary" onClick={addTokenToWallet("sHEC", SHEC_ADDRESS)}>
                         <Box sx={{ borderRadius: "100%", backgroundColor: "#3f4678", width: "30px", height: "30px" }}>
                           <img src={logo} alt="Logo" style={{ height: "25px", width: "25px" }} />
                         </Box>
                         <Typography variant="body1">sORN</Typography>
                       </Button>
-                      <Button variant="contained" color="secondary" onClick={addTokenToWallet("wsHEC", WSHEC_ADDRESS)}>
+                      <Button disabled variant="contained" color="secondary" onClick={addTokenToWallet("wsHEC", WSHEC_ADDRESS)}>
                         <Box sx={{ borderRadius: "100%", backgroundColor: "#555555", width: "30px", height: "30px" }}>
                           <img src={logo} alt="Logo" style={{ height: "25px", width: "25px" }} />
                         </Box>
