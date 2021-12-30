@@ -2,6 +2,7 @@ import { useCallback, useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import Social from "./Social";
+import LandIcon from "@material-ui/icons/Landscape";
 import externalUrls from "./externalUrls";
 import { ReactComponent as StakeIcon } from "../../assets/icons/stake.svg";
 import { ReactComponent as BondIcon } from "../../assets/icons/bond.svg";
@@ -11,7 +12,7 @@ import { ReactComponent as BuyIcon } from "../../assets/icons/globe.svg";
 import { ReactComponent as SaleIcon } from "../../assets/icons/arrow-up.svg";
 import { ReactComponent as Stake6Icon } from "../../assets/icons/wrap.svg";
 import { ReactComponent as LendIcon } from "../../assets/icons/hamburger.svg";
-import { ReactComponent as LandIcon } from "../../assets/icons/sun.svg";
+// import { ReactComponent as LandIcon } from "../../assets/icons/info-fill.svg";
 import logo from "./logo.png";
 import buyLand from "./buyLand.png";
 import { trim, shorten } from "../../helpers";
@@ -96,7 +97,8 @@ function NavContent() {
                 className={`button-dapp-menu ${isActive ? "active" : ""}`}
               >
                 <Typography variant="h6">
-                  <img src={buyLand} alt="Logo" style={{ minWdth: "20px", minHeight: "20px", width: "20px", marginRight:"11px" }} />
+                  {/* <img src={buyLand} alt="Logo" style={{ minWdth: "20px", minHeight: "20px", width: "20px", marginRight:"11px" }} /> */}
+                  <SvgIcon color="primary" component={LandIcon} />
                   Buy Lands
                 </Typography>
               </Link>
