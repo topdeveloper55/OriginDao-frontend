@@ -187,10 +187,10 @@ function ConnectMenu() {
                   style={{ width: "270px", backgroundColor: "#747450", borderRadius: "10px", margin: "auto" }}
                 >
                   <Typography>
-                    {totalLeft}/40000 Available: {Number(totalLeft / 400)}%
+                    {40000-totalLeft}/40000 sold: {Number((40000-totalLeft) / 400)}%
                   </Typography>
                 </Box>
-                <ProgressBar completed={Number(totalLeft / 400)} text={`${Number(totalLeft / 400)}%`} />
+                <ProgressBar completed={Number((40000-totalLeft) / 400)} text={`${Number((40000-totalLeft) / 400)}%`} />
               </Box>
 
               <Box mt={5} style={{ paddingRight: "100px", paddingLeft: "100px" }}>

@@ -13,6 +13,7 @@ import { ReactComponent as Stake6Icon } from "../../assets/icons/wrap.svg";
 import { ReactComponent as LendIcon } from "../../assets/icons/hamburger.svg";
 import { ReactComponent as LandIcon } from "../../assets/icons/sun.svg";
 import logo from "./logo.png";
+import buyLand from "./buyLand.png";
 import { trim, shorten } from "../../helpers";
 import { useAddress, useWeb3Context } from "src/hooks/web3Context";
 import useBonds from "../../hooks/Bonds";
@@ -95,7 +96,7 @@ function NavContent() {
                 className={`button-dapp-menu ${isActive ? "active" : ""}`}
               >
                 <Typography variant="h6">
-                  <SvgIcon color="primary" component={LandIcon} />
+                  <img src={buyLand} alt="Logo" style={{ minWdth: "20px", minHeight: "20px", width: "20px", marginRight:"11px" }} />
                   Buy Lands
                 </Typography>
               </Link>
