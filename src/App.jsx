@@ -19,7 +19,7 @@ import { loadAppDetails } from "./slices/AppSlice";
 import { loadAccountDetails, calculateUserBondDetails } from "./slices/AccountSlice";
 import { info } from "./slices/MessagesSlice";
 
-import { Stake, ChooseBond, Bond, TreasuryDashboard, Sale } from "./views";
+import { Stake, ChooseBond, Bond, TreasuryDashboard, Sale, BuyLand } from "./views";
 import Sidebar from "./components/Sidebar/Sidebar.jsx";
 import TopBar from "./components/TopBar/TopBar.jsx";
 import NavDrawer from "./components/Sidebar/NavDrawer.jsx";
@@ -239,6 +239,10 @@ function App() {
           <Switch>
             <Route exact path="/sale">
               <Sale />
+            </Route>
+
+            <Route exact path="/lands">
+              <BuyLand></BuyLand>
             </Route>
 
             {/* <Route exact path="/dashboard">

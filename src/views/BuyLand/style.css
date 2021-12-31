@@ -1,0 +1,9 @@
+.paper-container {
+  background-image: url("land.PNG");
+  background-size: cover;
+}
+
+img {
+  min-width: 50px;
+  max-width: 150px;
+}
