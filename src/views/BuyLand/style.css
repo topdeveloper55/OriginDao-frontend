@@ -3,7 +3,20 @@
   background-size: cover;
 }
 
-img {
-  min-width: 50px;
-  max-width: 150px;
+.land-item {
+  min-width: 80px;
+  width: 140px;
+}
+
+.land-item:hover {
+  box-shadow: 2px 2px 2px grey;
+  cursor: pointer;
+}
+
+.checked {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  bottom: 80px;
+  left: 40%;
 }
