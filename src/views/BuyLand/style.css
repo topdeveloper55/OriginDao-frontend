@@ -20,3 +20,7 @@
   bottom: 80px;
   left: 40%;
 }
+
+.disable:hover {
+  cursor: pointer;
+}

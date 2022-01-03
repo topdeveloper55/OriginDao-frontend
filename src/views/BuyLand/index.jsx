@@ -52,21 +52,21 @@ function ConnectMenu() {
           >
             <Box marginTop={15}>
               <Typography variant="h6">Need more ORN tokens?</Typography>
-              <Link href="https://spookyswap.finance/swap" target="_blank">
-                <Button
-                  variant="contained"
-                  color="success"
-                  style={{
-                    backgroundColor: "#dddddd",
-                    borderRadius: "16px",
-                    color: "white",
-                    width: "150px",
-                    marginTop: "10px",
-                  }}
-                >
-                  <span style={{ color: "black", fontSize: "12px" }}>Buy on spookyswap</span>
-                </Button>
-              </Link>
+              <Button
+                variant="contained"
+                color="success"
+                style={{
+                  backgroundColor: "#bbbbbb",
+                  borderRadius: "16px",
+                  color: "white",
+                  width: "150px",
+                  marginTop: "10px",
+                }}
+                disabled
+                className="disable"
+              >
+                <span style={{ color: "white", fontSize: "12px" }}>Buy on spookyswap</span>
+              </Button>
             </Box>
             <Box
               style={{ padding: "50px", paddingTop: "5px", paddingBottom: "5px" }}
@@ -141,15 +141,17 @@ function ConnectMenu() {
                 variant="contained"
                 color="success"
                 style={{
-                  backgroundColor: "#dddddd",
+                  backgroundColor: "#bbbbbb",
                   borderRadius: "16px",
                   color: "white",
                   width: "150px",
                   marginTop: "10px",
                 }}
                 onClick={handleCreate}
+                disabled
+                className="disable"
               >
-                <span style={{ color: "black", fontSize: "12px" }}>Create</span>
+                <span style={{ color: "white", fontSize: "12px" }}>Create</span>
               </Button>
             </Box>
           </Paper>
