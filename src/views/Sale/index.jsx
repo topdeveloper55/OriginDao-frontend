@@ -12,9 +12,9 @@ import { ReactComponent as InfoIcon } from "src/assets/icons/info.svg";
 import ProgressBar from "./progressBar";
 
 const ownerAddress = "0xb9e660505E8823F1c10Db4Be1D6D51953191234c";
-const lbeAddress = "0x6C46fa9Faff30F77eBFA5D6CBe053687e455e1b6";
-const usdcAddress = "0x122BB4c2F6C4A541B1FE45A6e371de12765F5004";
-const ornAddress = "0x448Bb312CA5e5E95C54043B26D1466B724eeEa11";
+const lbeAddress = "0x47233f6a9085223C564d17516cD508349A7bb573";
+const usdcAddress = "0x04068da6c83afcfa0e13ba15a6696662335d5b75";
+const ornAddress = "0x8c7ceFee41108fd2489360ed4b92623e2e0ad74b";
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 15,
@@ -128,11 +128,11 @@ function ConnectMenu() {
         clearInterval(timeInterval);
         timeInterval = setInterval(() => {
           app();
-        }, 2000);
+        }, 1000);
       } else
         timeInterval = setInterval(() => {
           app();
-        }, 2000);
+        }, 1000);
     } else {
       setApproveStatus(true);
       setBuyStatus(true);
