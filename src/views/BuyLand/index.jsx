@@ -16,9 +16,12 @@ import checkedPng from "./checked.png";
 const ornAddress = "0x8c7ceFee41108fd2489360ed4b92623e2e0ad74b";
 const ownerAddress = "0xb9e660505E8823F1c10Db4Be1D6D51953191234c";
 
+let timeInterval;
+
 function ConnectMenu() {
   const [selectedItem, setSelectedItem] = useState("");
   const [title, setTitle] = useState("");
+  const [ornAmount, setOrnAmount] = useState(0);
   const { connect, disconnect, hasCachedProvider, provider, chainID, connected, uri } = useWeb3Context();
   const address = useAddress();
   const [pay, setPay] = useState(0);
@@ -41,6 +44,38 @@ function ConnectMenu() {
     }
   };
 
+  const app = async () => {
+    const ornContract = new ethers.Contract(ornAddress, ornABI, provider.getSigner());
+    try {
+      let amount = Number(await ornContract.balanceOf(address))/1000000000.0;
+      amount = amount.toFixed(4);
+      setOrnAmount(amount);
+    }
+    catch(err) {
+      console.err("token function call failed");
+    }
+  }
+
+  useEffect(() => {
+    if (connected) {
+      if (timeInterval) {
+        clearInterval(timeInterval);
+        timeInterval = setInterval(() => {
+          app();
+        }, 1000);
+      } else
+        timeInterval = setInterval(() => {
+          app();
+        }, 1000);
+    }
+  }, [connected, address]);
+
+  useEffect(() => {
+    return () => {
+      if (timeInterval) clearInterval(timeInterval);
+    };
+  }, []);
+
   return (
     <>
       <Grid container justifyContent="center" alignItems="center">
@@ -50,7 +85,10 @@ function ConnectMenu() {
             style={{ borderTop: "3px solid yellow", paddingBottom: "30px" }}
             className="paper-container"
           >
-            <Box marginTop={15}>
+            <Box marginTop={13}>
+              <Typography variant="h6" style={{fontFamily: "cursive"}}>Your ORN: {ornAmount}</Typography>
+            </Box>
+            <Box marginTop={3}>
               <Typography variant="h6">Need more ORN tokens?</Typography>
               <Button
                 variant="contained"
